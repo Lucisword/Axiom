@@ -6,3 +6,12 @@ node_modules
 test-ledger
 .yarn
 .surfpool
+
+# Local secrets and generated key material
+*.keypair.json
+*.pem
+.env
+.env.*
+
+# Generated binaries
+*.so
