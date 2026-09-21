@@ -7,7 +7,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-axiom = "9x3boz9bPvwL1zfTMyDo3Qjv441TqCy7hQsjf2aWoW7x"
+eumentus = "9x3boz9bPvwL1zfTMyDo3Qjv441TqCy7hQsjf2aWoW7x"
 
 [provider]
 cluster = "localnet"

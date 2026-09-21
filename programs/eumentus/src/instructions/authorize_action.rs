@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 
 use crate::{
     constants::AUTHORITY_SEED,
-    error::AxiomError,
+    error::EumentusError,
     state::{AuthorityState, CapabilityAuthority},
 };
 
@@ -32,12 +32,12 @@ pub fn handle_authorize_action(
 
     require!(
         authority.state == AuthorityState::Active,
-        AxiomError::CapabilityNotActive
+        EumentusError::CapabilityNotActive
     );
 
     require!(
         amount <= authority.max_per_action,
-        AxiomError::ExceedsPerActionLimit
+        EumentusError::ExceedsPerActionLimit
     );
 
     Ok(())

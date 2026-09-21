@@ -12,7 +12,7 @@ pub use state::*;
 declare_id!("9x3boz9bPvwL1zfTMyDo3Qjv441TqCy7hQsjf2aWoW7x");
 
 #[program]
-pub mod axiom {
+pub mod eumentus {
     use super::*;
 
     pub fn create_capability_authority(

@@ -2,7 +2,7 @@ use std::rc::Rc;
 
 use anchor_client::{Client, Cluster};
 use anchor_lang::{AccountDeserialize, prelude::Pubkey,};
-use axiom::{
+use eumentus::{
     accounts::CreateCapabilityAuthority,
     instruction::CreateCapabilityAuthority as CreateCapabilityAuthorityIx,
     state::{AuthorityState, CapabilityAuthority},
@@ -18,7 +18,7 @@ fn creates_capability_authority() -> Result<(), Box<dyn std::error::Error>> {
 
     let client = Client::new(Cluster::Localnet, Rc::new(payer));
 
-    let program = client.program(axiom::ID)?;
+    let program = client.program(eumentus::ID)?;
 
     let agent = Keypair::new();
 
@@ -31,7 +31,7 @@ fn creates_capability_authority() -> Result<(), Box<dyn std::error::Error>> {
             agent.pubkey().as_ref(),
             capability.as_ref(),
         ],
-        &axiom::ID,
+        &eumentus::ID,
     );
 
     program

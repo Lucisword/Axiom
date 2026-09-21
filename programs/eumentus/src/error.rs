@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 #[error_code]
-pub enum AxiomError {
+pub enum EumentusError {
     #[msg("Capability authority is not active")]
     CapabilityNotActive,
 

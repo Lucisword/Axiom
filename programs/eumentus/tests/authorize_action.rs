@@ -2,7 +2,7 @@ use std::rc::Rc;
 
 use anchor_client::{Client, Cluster};
 use anchor_lang::prelude::Pubkey;
-use axiom::{
+use eumentus::{
     accounts::CreateCapabilityAuthority,
     instruction::{
         AuthorizeAction as AuthorizeActionIx,
@@ -19,7 +19,7 @@ fn create_program() -> anchor_client::Program<Rc<Keypair>> {
     .unwrap();
 
     let client = Client::new(Cluster::Localnet, Rc::new(payer));
-    client.program(axiom::ID).unwrap()
+    client.program(eumentus::ID).unwrap()
 }
 
 fn setup() -> (
@@ -39,7 +39,7 @@ fn setup() -> (
             agent.pubkey().as_ref(),
             capability.as_ref(),
         ],
-        &axiom::ID,
+        &eumentus::ID,
     );
 
     program
@@ -67,7 +67,7 @@ fn authorizes_action_within_limit() -> Result<(), Box<dyn std::error::Error>> {
     program
         .request()
         .signer(&agent)
-        .accounts(axiom::accounts::AuthorizeAction {
+        .accounts(eumentus::accounts::AuthorizeAction {
             agent: agent.pubkey(),
             authority: authority_pda,
         })
@@ -87,7 +87,7 @@ fn rejects_action_above_limit() -> Result<(), Box<dyn std::error::Error>> {
     let result = program
         .request()
         .signer(&agent)
-        .accounts(axiom::accounts::AuthorizeAction {
+        .accounts(eumentus::accounts::AuthorizeAction {
             agent: agent.pubkey(),
             authority: authority_pda,
         })
@@ -112,7 +112,7 @@ fn rejects_wrong_agent() -> Result<(), Box<dyn std::error::Error>> {
     let result = program
         .request()
         .signer(&attacker)
-        .accounts(axiom::accounts::AuthorizeAction {
+        .accounts(eumentus::accounts::AuthorizeAction {
             agent: attacker.pubkey(),
             authority: authority_pda,
         })
